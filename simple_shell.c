@@ -42,4 +42,5 @@ int main(int argc, char **argv, char **envp)
 		else
 			execvpe(cmd, argv2, envp);
 	}
+	return (0);
 }
