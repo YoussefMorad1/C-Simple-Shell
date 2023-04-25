@@ -32,22 +32,14 @@ int main(int argc, char **argv, char **envp)
 			exit(1);
 		}
 		else if (!strcmp(cmd, "exit"))
-		{
 			exit_shell(argv2, argv);
-			continue;
-		}
 		else if (!is_file)
-		{
 			printf("%s: No such file or directory\n", argv[0]);
-			continue;
-		}
-		if (fork())
-		{
+		else if (fork())
 			wait(0);
-			continue;
-		}
-		if (!strlen(s))
+		else if (!strlen(s))
 			exit(0);
-		execvpe(cmd, argv2, envp);
+		else
+			execvpe(cmd, argv2, envp);
 	}
 }
