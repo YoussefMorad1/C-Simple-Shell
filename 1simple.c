@@ -40,6 +40,6 @@ int main(int argc, char **argv, char **envp)
 		else if (!strlen(s))
 			exit(0);
 		else
-			execvpe(cmd, argv2, envp);
+			execve(cmd, argv2, envp);
 	}
 }
