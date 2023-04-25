@@ -9,15 +9,16 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	size_t noChrs, SIZE = 100;
+	size_t SIZE = 100;
 	char *s = malloc(SIZE);
 
+	(void)argc;
 	if (!s)
 		exit(1);
 	while (1)
 	{
 		char **argv2 = malloc(1), *cmd = 0;
-		int is_file = 0, chSt;
+		int is_file = 0;
 
 		argv2[0] = 0;
 		display_prompt();

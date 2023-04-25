@@ -6,9 +6,9 @@
  */
 void print_args(char **argv)
 {
-	printf("all areguments: \n");
 	int i = 0;
 
+	printf("all areguments: \n");
 	while (argv[i])
 	{
 		printf("%d: %s\n", i, argv[i]);
@@ -26,11 +26,11 @@ void print_args(char **argv)
 int push(char ***ptr, char *s)
 {
 	int i = 0;
-	char **argv = *ptr;
+	char **argv = *ptr, **tmp;
 
 	while (argv[i])
 		i++;
-	char **tmp = malloc((i + 2) * (sizeof(*tmp)));
+	tmp = malloc((i + 2) * (sizeof(*tmp)));
 
 	if (!tmp)
 		return (0);

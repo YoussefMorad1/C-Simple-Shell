@@ -56,7 +56,7 @@ int is_file(char *file)
 char **split(char *s, char ch)
 {
 	char **result = malloc(1), *tmp, *x;
-	int i = 0, j = 0;
+	int i = 0;
 
 	result[0] = 0;
 	while (s[i])

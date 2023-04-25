@@ -14,14 +14,14 @@ void display_prompt(void)
 void get_input(char **ptr, size_t *sz)
 {
 	int noChrs = getline(ptr, sz, stdin);
+	char *s;
 
 	if (noChrs == -1)
 	{
 		free(*ptr);
 		exit(1);
 	}
-	char *s = *ptr;
-
+	s = *ptr;
 	if (s[strlen(s) - 1] == '\n')
 		/* remove the '\n' from the end */
 		s[strlen(s) - 1] = '\0';
@@ -34,7 +34,7 @@ void get_input(char **ptr, size_t *sz)
  */
 void parse_input(char *s, char **ptrCmd, char ***ptrarg)
 {
-	int i = 0, frst = 1, j = 0;
+	int i = 0, frst = 1;
 	char *tmp, *x;
 
 	while (s[i])
