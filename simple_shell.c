@@ -23,6 +23,8 @@ int main(int argc, char **argv)
 		argv2[0] = 0;
 		display_prompt();
 		get_input(&s, &SIZE);
+		if (!_strlen(s))
+			continue;
 		parse_input(s, &cmd, &argv2);
 		is_file = find_file(&cmd, _getenv("PATH"));
 		if (is_file == -1)
@@ -40,8 +42,6 @@ int main(int argc, char **argv)
 		}
 		else if (fork())
 			wait(0);
-		else if (!_strlen(s))
-			exit(0);
 		else
 			execve(cmd, argv2, environ);
 		clean_args(argv2);
