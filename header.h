@@ -1,6 +1,5 @@
 #ifndef shellHead
 #define shellHead
-#define _GNU_SOURCE
 #include "string.h"
 #include "printf.h"
 #include <unistd.h>
