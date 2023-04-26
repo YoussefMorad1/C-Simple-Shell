@@ -15,8 +15,5 @@ void exit_shell(char **argv, char **argv_main)
 		printstr("logout\n");
 		printstr(argv_main[0]);
 		printstr(": exit: too many arguments\n");
-		/*
-		_printf("%s: %s: too many arguments\n", argv_main[0], "exit");
-		*/
 	}
 }
