@@ -52,9 +52,9 @@ int find_file(char **ptrFile, char *path)
 			return (1);
 		}
 		i++;
+		free(full_path);
 	}
 	clean_args(all_paths);
-	free(full_path);
 	return (0);
 }
 

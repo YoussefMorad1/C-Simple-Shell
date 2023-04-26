@@ -24,17 +24,22 @@ int main(int argc, char **argv)
 		display_prompt();
 		get_input(&s, &SIZE);
 		if (!_strlen(s))
+		{
+			free(s);
+			clean_args(argv2);
 			continue;
+		}
 		parse_input(s, &cmd, &argv2);
 		is_file = find_file(&cmd, _getenv("PATH"));
-		if (is_file == -1)
+		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
 			clean_strs(s, cmd, 0);
 			clean_args(argv2);
-			exit(1);
+			if (!_strcmp(cmd, "exit"))
+				exit_shell(argv2, argv);
+			else
+				exit(1);
 		}
-		else if (!_strcmp(cmd, "exit"))
-			exit_shell(argv2, argv);
 		else if (!is_file)
 		{
 			printstr(argv[0]);
