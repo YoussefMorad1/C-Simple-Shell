@@ -11,7 +11,7 @@ void display_prompt(void)
  * @ptr: pointer to string to get input in
  * @sz: pointer to size of the string
  */
-void get_input(char **ptr, size_t *sz)
+void get_input(char **ptr, size_t *sz, char **argv)
 {
 	int noChrs = getline(ptr, sz, stdin);
 	char *s;
@@ -19,6 +19,7 @@ void get_input(char **ptr, size_t *sz)
 	if (noChrs == -1)
 	{
 		free(*ptr);
+		clean_args(argv);
 		exit(1);
 	}
 	s = *ptr;

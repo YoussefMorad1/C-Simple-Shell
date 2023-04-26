@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
 		argv2[0] = NULL;
 		display_prompt();
-		get_input(&s, &SIZE);
+		get_input(&s, &SIZE, argv2);
 		if (!_strlen(s))
 		{
 			clean_args(argv2);
