@@ -32,12 +32,13 @@ int main(int argc, char **argv)
 		is_file = find_file(&cmd, _getenv("PATH"));
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
-			clean_strs(s, cmd, 0);
-			clean_args(argv2);
-			if (!_strcmp(cmd, "exit"))
-				exit_shell(argv2, argv);
-			else
+			if (is_file == -1)
+			{
+				clean_args(argv2);
 				exit(1);
+			}
+			clean_strs(s, cmd, 0);
+			exit_shell(argv2, argv);
 		}
 		else if (!is_file)
 		{

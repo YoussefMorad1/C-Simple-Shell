@@ -6,10 +6,19 @@
  */
 void exit_shell(char **argv, char **argv_main)
 {
+	int x;
+
 	if (!argv[1])
+	{
+		clean_args(argv);
 		exit(0);
+	}
 	else if (argv[1] && !argv[2])
-		exit(_stoi(argv[1]));
+	{
+		x = _stoi(argv[1]);	
+		clean_args(argv);
+		exit(x);
+	}
 	else
 	{
 		printstr("logout\n");
