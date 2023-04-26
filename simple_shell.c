@@ -4,7 +4,6 @@
  *
  * @argc: number of arguments
  * @argv: array of arguments
- * @envp: array of enviroment variables
  * Return: hi
  */
 int main(int argc, char **argv)

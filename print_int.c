@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 /**
- * pint - hi
+ * printint - hi
  * @x : hi
  * Return: hi
  */

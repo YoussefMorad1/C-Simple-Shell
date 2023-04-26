@@ -17,7 +17,7 @@ char *_getenv(char *s)
 }
 /**
  * find_file - search file in PATH
- * @file:  name of file
+ * @ptrFile:  name of file
  * @path: path string with ':' sperated
  * Return: returns 1 or 0 or -1 if no memory
  */
