@@ -23,7 +23,8 @@ char *_getenv(char *s)
  */
 int find_file(char **ptrFile, char *path)
 {
-	char **all_paths = split(path, ':'), *file = *ptrFile, *full_path;
+	char **all_paths = split(path, ':'), *file = *ptrFile,
+	     *full_path, *slsh, *cur_path;
 	int i = 0;
 
 	if (!all_paths)
@@ -35,8 +36,7 @@ int find_file(char **ptrFile, char *path)
 	}
 	while (all_paths[i])
 	{
-		char *cur_path = all_paths[i], *slsh = "/\0";
-
+		cur_path = all_paths[i], slsh = "/\0";
 		full_path = malloc(_strlen(cur_path) + _strlen(file) + 5);
 		if (!cur_path || !full_path)
 			clean_strs(cur_path, full_path, 0);
@@ -88,9 +88,7 @@ char **split(char *s, char ch)
 			i++;
 		if (!s[i])
 			break;
-		tmp = malloc(1);
-
-		tmp[0] = '\0';
+		tmp = malloc(1), tmp[0] = 0;
 		while (s[i] && s[i] != ch)
 		{
 			tmp2 = malloc(_strlen(tmp) + 2);
@@ -98,7 +96,6 @@ char **split(char *s, char ch)
 			free(tmp);
 			tmp = tmp2;
 			x = malloc(2);
-
 			x[0] = s[i];
 			x[1] = '\0';
 			if (!tmp)

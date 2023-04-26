@@ -9,18 +9,16 @@
  */
 int main(int argc, char **argv)
 {
-	size_t SIZE = 100;
-	char *s = malloc(SIZE);
+	int is_file = 0;
+	size_t SIZE = 1000;
+	char *s = malloc(SIZE), **argv2, *cmd;
 
 	(void)argc;
 	if (!s)
 		exit(1);
 	while (1)
 	{
-		char **argv2 = malloc(sizeof(*argv2)), *cmd = NULL;
-		int is_file = 0;
-
-		argv2[0] = NULL;
+		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
 		display_prompt();
 		get_input(&s, &SIZE, argv2);
 		if (!_strlen(s))
@@ -33,10 +31,9 @@ int main(int argc, char **argv)
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
 			clean_strs(s, cmd, 0);
-			if (is_file == -1)
-				clean_args(argv2);
-			else
+			if (is_file != -1)
 				exit_shell(argv2, argv);
+			clean_args(argv2);
 			exit(1);
 		}
 		else if (!is_file)

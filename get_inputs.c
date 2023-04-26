@@ -45,17 +45,14 @@ void parse_input(char *s, char **ptrCmd, char ***ptrarg)
 			i++;
 		if (!s[i])
 			break;
-		tmp = malloc(1);
-		tmp[0] = '\0';
+		tmp = malloc(1), tmp[0] = 0;
 		while (s[i] && s[i] != ' ')
 		{
 			tmp2 = malloc(_strlen(tmp) + 2);
 			_strcpy(tmp2, tmp);
 			free(tmp);
 			tmp = tmp2;
-			x = malloc(2);
-			x[0] = s[i];
-			x[1] = '\0';
+			x = malloc(2), x[0] = s[i], x[1] = 0;
 			if (!tmp)
 			{
 				clean_strs(tmp, *ptrCmd, s);
