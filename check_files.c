@@ -5,21 +5,22 @@
  * @path: path string with ':' sperated
  * Return: returns 1 or 0 or -1 if no memory
  */
-int find_file(char *file, char *path)
+int find_file(char **ptrFile, char *path)
 {
-	char **all_paths = split(path, ':');
+	char **all_paths = split(path, ':'), *file = *ptrFile, *full_path;
 	int i = 0;
 
 	if (!all_paths)
 		return (-1);
 	if (is_file(file) && (file[0] == '/' || file[0] == '~' ||
-				file[0] == '.' || file[0] == '#' || file[0] == '-'))
+				file[0] == '.' || file[0] == '#' || file[0] == '-')){
+		clean_args(all_paths);
 		return (1);
+	}
 	while (all_paths[i])
 	{
-		char *cur_path = all_paths[i];
-		char *full_path = malloc(_strlen(cur_path) + _strlen(file) + 5);
-		char *slsh = "/\0";
+		char *cur_path = all_paths[i], *slsh = "/\0";
+		full_path = malloc(_strlen(cur_path) + _strlen(file) + 5);
 
 		if (!cur_path || !full_path)
 		{
@@ -29,10 +30,16 @@ int find_file(char *file, char *path)
 		_strcpy(full_path, cur_path);
 		_strcat(full_path, slsh);
 		_strcat(full_path, file);
-		if (is_file(full_path))
+		if (is_file(full_path)){
+			free(file);
+			(*ptrFile) = full_path;
+		      	clean_args(all_paths);	
 			return (1);
+		}
 		i++;
 	}
+	clean_args(all_paths);
+	free(full_path);
 	return (0);
 }
 

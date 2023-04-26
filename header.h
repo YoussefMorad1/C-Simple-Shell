@@ -11,7 +11,7 @@
 char **split(char *s, char ch);
 int is_file(char *s);
 void exit_shell(char **argv, char **argv_main);
-int find_file(char *file, char *path);
+int find_file(char **file, char *path);
 void display_prompt(void);
 void get_input(char **ptr, size_t *sz);
 void parse_input(char *s, char **cmd, char ***argv);

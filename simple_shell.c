@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **envp)
 		display_prompt();
 		get_input(&s, &SIZE);
 		parse_input(s, &cmd, &argv2);
-		is_file = find_file(cmd, getenv("PATH"));
+		is_file = find_file(&cmd, getenv("PATH"));
 		if (is_file == -1)
 		{
 			clean_strs(s, cmd, 0);
