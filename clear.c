@@ -24,5 +24,6 @@ void clean_args(char **argv)
 
 	while (argv[j])
 		free(argv[j++]);
+	free(argv[j]);
 	free(argv);
 }

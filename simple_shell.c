@@ -17,15 +17,14 @@ int main(int argc, char **argv)
 		exit(1);
 	while (1)
 	{
-		char **argv2 = malloc(1), *cmd = 0;
+		char **argv2 = malloc(sizeof(*argv2)), *cmd = NULL;
 		int is_file = 0;
 
-		argv2[0] = 0;
+		argv2[0] = NULL;
 		display_prompt();
 		get_input(&s, &SIZE);
 		if (!_strlen(s))
 		{
-			free(s);
 			clean_args(argv2);
 			continue;
 		}
