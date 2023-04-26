@@ -31,16 +31,16 @@ int main(int argc, char **argv, char **envp)
 			clean_args(argv2);
 			exit(1);
 		}
-		else if (!strcmp(cmd, "exit"))
+		else if (!_strcmp(cmd, "exit"))
 			exit_shell(argv2, argv);
 		else if (!is_file)
-			printf("%s: No such file or directory\n", argv[0]);
+			_printf("%s: No such file or directory\n", argv[0]);
 		else if (fork())
 			wait(0);
-		else if (!strlen(s))
+		else if (!_strlen(s))
 			exit(0);
 		else
-			execvpe(cmd, argv2, envp);
+			execve(cmd, argv2, envp);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}

@@ -18,7 +18,7 @@ int find_file(char *file, char *path)
 	while (all_paths[i])
 	{
 		char *cur_path = all_paths[i];
-		char *full_path = malloc(strlen(cur_path) + strlen(file) + 5);
+		char *full_path = malloc(_strlen(cur_path) + _strlen(file) + 5);
 		char *slsh = "/\0";
 
 		if (!cur_path || !full_path)
@@ -26,9 +26,9 @@ int find_file(char *file, char *path)
 			clean_strs(cur_path, full_path, 0);
 			return (-1);
 		}
-		strcpy(full_path, cur_path);
-		strcat(full_path, slsh);
-		strcat(full_path, file);
+		_strcpy(full_path, cur_path);
+		_strcat(full_path, slsh);
+		_strcat(full_path, file);
 		if (is_file(full_path))
 			return (1);
 		i++;
@@ -55,7 +55,7 @@ int is_file(char *file)
  */
 char **split(char *s, char ch)
 {
-	char **result = malloc(1), *tmp, *x;
+	char **result = malloc(1), *tmp, *x, *tmp2;
 	int i = 0;
 
 	result[0] = 0;
@@ -70,7 +70,10 @@ char **split(char *s, char ch)
 		tmp[0] = '\0';
 		while (s[i] && s[i] != ch)
 		{
-			tmp = realloc(tmp, strlen(tmp) + 2);
+			tmp2 = malloc(_strlen(tmp) + 2);
+			_strcpy(tmp2, tmp);
+			free(tmp);
+			tmp = tmp2;
 			x = malloc(2);
 
 			x[0] = s[i];
@@ -81,7 +84,7 @@ char **split(char *s, char ch)
 				clean_args(result);
 				return (0);
 			}
-			strcat(tmp, x);
+			_strcat(tmp, x);
 			i++;
 			free(x);
 		}

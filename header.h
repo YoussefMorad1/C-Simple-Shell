@@ -1,9 +1,10 @@
 #ifndef shellHead
 #define shellHead
 #define _GNU_SOURCE
+#include "string.h"
+#include "printf.h"
 #include <unistd.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
