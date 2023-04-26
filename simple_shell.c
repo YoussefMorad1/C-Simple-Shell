@@ -13,22 +13,37 @@ int main(int argc, char **argv, char **envp)
 	char *s = malloc(SIZE);
 
 	(void)argc;
-	(void)argv;
 	if (!s)
 		exit(1);
 	while (1)
 	{
 		char **argv2 = malloc(1), *cmd = 0;
+		int is_file = 0;
 
 		argv2[0] = 0;
 		display_prompt();
 		get_input(&s, &SIZE);
-		if(fork())
+		parse_input(s, &cmd, &argv2);
+		is_file = find_file(&cmd, getenv("PATH"));
+		if (is_file == -1)
 		{
-			wait(0);
-			continue;
+			clean_strs(s, cmd, 0);
+			clean_args(argv2);
+			exit(1);
 		}
-		execve(s, argv2, envp);
+		else if (!_strcmp(cmd, "exit"))
+			exit_shell(argv2, argv);
+		else if (!is_file)
+		{
+			printstr(argv[0]);
+			printstr(": No such file or directory\n");
+		}
+		else if (fork())
+			wait(0);
+		else if (!_strlen(s))
+			exit(0);
+		else
+			execve(cmd, argv2, envp);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}
