@@ -45,7 +45,7 @@ int find_file(char **ptrFile, char *path)
 		_strcpy(full_path, cur_path);
 		_strcat(full_path, slsh);
 		_strcat(full_path, file);
-		if (is_file(full_path)){
+		if (is_file(full_path) && file[0] != '/' && file[0] != '.'){
 			free(file);
 			(*ptrFile) = full_path;
 		      	clean_args(all_paths);	
