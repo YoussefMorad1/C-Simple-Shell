@@ -41,6 +41,8 @@ int main(int argc, char **argv, char **envp)
 			exit(0);
 		else
 			execvpe(cmd, argv2, envp);
+		clean_args(argv2);
+		clean_strs(cmd, 0, 0);
 	}
 	return (0);
 }
