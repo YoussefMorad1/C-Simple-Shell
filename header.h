@@ -1,5 +1,6 @@
 #ifndef shellHead
 #define shellHead
+#define _GNU_SOURCE
 #include "string.h"
 #include "printf.h"
 #include <unistd.h>
@@ -8,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 char **split(char *s, char ch);
+char *_getenv(char *s);
 int is_file(char *s);
 void exit_shell(char **argv, char **argv_main);
 int find_file(char **file, char *path);

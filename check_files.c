@@ -1,4 +1,14 @@
 #include "header.h"
+char *_getenv(char *s)
+{
+	char **ptr = environ;
+	for (; *ptr; ptr++)
+	{
+		if (!_strncmp(*ptr, s, _strlen(s)))
+			return ((*ptr) + _strlen(s) + 1);
+	}
+	return (0);
+}
 /**
  * find_file - search file in PATH
  * @file:  name of file
