@@ -32,6 +32,7 @@ void get_input(char **ptr, size_t *sz)
  * @ptrCmd: pointer to string of command
  * @ptrarg: pointer to arr of strings of arguments
  */
+/*
 void parse_input(char *s, char **ptrCmd, char ***ptrarg)
 {
 	int i = 0, frst = 1;
@@ -78,6 +79,7 @@ void parse_input(char *s, char **ptrCmd, char ***ptrarg)
 		free(tmp);
 	}
 }
+*/
 /**
  * fill_command - fill the command with str
  * @ptrCmd: pointer to command string
@@ -85,6 +87,7 @@ void parse_input(char *s, char **ptrCmd, char ***ptrarg)
  * @mnStr: main line of input str (might get freed)
  * @ptrarg: pointer to array of arguments (might get freed)
  */
+/*
 void fill_command(char **ptrCmd, char *s, char *mnStr, char **ptrarg)
 {
 	*ptrCmd = malloc(_strlen(s) + 1);
@@ -96,3 +99,4 @@ void fill_command(char **ptrCmd, char *s, char *mnStr, char **ptrarg)
 	}
 	_strcpy(*ptrCmd, s);
 }
+*/
