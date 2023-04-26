@@ -1,4 +1,4 @@
-#include "header.h"
+#include "shell.h"
 /**
  * _getenv - get environment variable
  * @s: key of variable

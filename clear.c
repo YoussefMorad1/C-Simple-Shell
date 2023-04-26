@@ -1,4 +1,4 @@
-#include "header.h"
+#include "shell.h"
 /**
  * clean_strs - free memory of 3 strings
  * @s1 : str1
