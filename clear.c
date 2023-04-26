@@ -28,6 +28,6 @@ void clean_args(char **argv)
 		free(argv[j]);
 		j++;
 	}
-//	free(argv[j]);
+	free(argv[j]);
 	free(argv);
 }
