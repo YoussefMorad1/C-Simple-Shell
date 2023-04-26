@@ -21,9 +21,13 @@ void clean_strs(char *s1, char *s2, char *s3)
 void clean_args(char **argv)
 {
 	int j = 0;
-
+	
+	if (!argv) return;
 	while (argv[j])
-		free(argv[j++]);
-	free(argv[j]);
+	{
+		free(argv[j]);
+		j++;
+	}
+//	free(argv[j]);
 	free(argv);
 }
