@@ -4,7 +4,7 @@
  */
 void display_prompt(void)
 {
-	_printf("$ ");
+	printstr("$ ");
 }
 /**
  * get_input - get shell input

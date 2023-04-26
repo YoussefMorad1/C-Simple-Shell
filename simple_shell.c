@@ -34,7 +34,10 @@ int main(int argc, char **argv, char **envp)
 		else if (!_strcmp(cmd, "exit"))
 			exit_shell(argv2, argv);
 		else if (!is_file)
-			_printf("%s: No such file or directory\n", argv[0]);
+		{
+			printstr(argv[0]);
+			printstr(": No such file or directory\n");
+		}
 		else if (fork())
 			wait(0);
 		else if (!_strlen(s))

@@ -12,7 +12,11 @@ void exit_shell(char **argv, char **argv_main)
 		exit(_stoi(argv[1]));
 	else
 	{
-		_printf("logout\n");
+		printstr("logout\n");
+		printstr(argv_main[0]);
+		printstr(": exit: too many arguments\n");
+		/*
 		_printf("%s: %s: too many arguments\n", argv_main[0], "exit");
+		*/
 	}
 }

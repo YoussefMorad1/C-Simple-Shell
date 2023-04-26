@@ -7,7 +7,7 @@
  * @x : hi
  * Return: hi
  */
-int pint(int x)
+int printint(int x)
 {
 	char *s;
 	int y = x, ln = 0, m = 0, j = 0;

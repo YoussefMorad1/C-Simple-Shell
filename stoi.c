@@ -1,6 +1,6 @@
 #include "string.h"
-/** 
- * stoi - convert string to int
+/**
+ * _stoi - convert string to int
  * @s: string
  * Return: int
  */
@@ -13,5 +13,5 @@ int _stoi(char *s)
 		ans += (s[i] - '0') * mul;
 		mul *= 10;
 	}
-	return ans;
+	return (ans);
 }

@@ -8,10 +8,13 @@ void print_args(char **argv)
 {
 	int i = 0;
 
-	_printf("all areguments: \n");
+	printstr("all areguments: \n");
 	while (argv[i])
 	{
-		_printf("%d: %s\n", i, argv[i]);
+		printint(i);
+		printstr(": ");
+		printstr(argv[i]);
+		printstr("\n");
 		i++;
 	}
 }
