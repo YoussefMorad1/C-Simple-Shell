@@ -1,4 +1,9 @@
 #include "header.h"
+/**
+ * _getenv - get environment variable
+ * @s: key of variable
+ * Return: value of this given key
+ */
 char *_getenv(char *s)
 {
 	char **ptr = environ;
