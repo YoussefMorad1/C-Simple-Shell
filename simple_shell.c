@@ -7,7 +7,7 @@
  * @envp: array of enviroment variables
  * Return: hi
  */
-int main(int argc, char **argv, char **envp)
+int main(int argc, char **argv)
 {
 	size_t SIZE = 100;
 	char *s = malloc(SIZE);
@@ -43,7 +43,7 @@ int main(int argc, char **argv, char **envp)
 		else if (!_strlen(s))
 			exit(0);
 		else
-			execve(cmd, argv2, envp);
+			execve(cmd, argv2, environ);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}
