@@ -15,7 +15,7 @@ void exit_shell(char **argv, char **argv_main)
 	}
 	else if (argv[1] && !argv[2])
 	{
-		x = _stoi(argv[1]);	
+		x = _stoi(argv[1]);
 		clean_args(argv);
 		exit(x);
 	}

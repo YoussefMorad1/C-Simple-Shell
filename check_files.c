@@ -7,6 +7,7 @@
 char *_getenv(char *s)
 {
 	char **ptr = environ;
+
 	for (; *ptr; ptr++)
 	{
 		if (!_strncmp(*ptr, s, _strlen(s)))
@@ -35,20 +36,20 @@ int find_file(char **ptrFile, char *path)
 	while (all_paths[i])
 	{
 		char *cur_path = all_paths[i], *slsh = "/\0";
-		full_path = malloc(_strlen(cur_path) + _strlen(file) + 5);
 
+		full_path = malloc(_strlen(cur_path) + _strlen(file) + 5);
 		if (!cur_path || !full_path)
-		{
 			clean_strs(cur_path, full_path, 0);
+		if (!cur_path || !full_path)
 			return (-1);
-		}
 		_strcpy(full_path, cur_path);
 		_strcat(full_path, slsh);
 		_strcat(full_path, file);
-		if (is_file(full_path) && file[0] != '/' && file[0] != '.'){
+		if (is_file(full_path) && file[0] != '/' && file[0] != '.')
+		{
 			free(file);
 			(*ptrFile) = full_path;
-		      	clean_args(all_paths);	
+			clean_args(all_paths);
 			return (1);
 		}
 		i++;

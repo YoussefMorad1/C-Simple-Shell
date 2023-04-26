@@ -19,7 +19,7 @@ int _strcmp(char *s, char *ss)
  * @s : hi
  * @ss : hi
  * @n : hi
- * Return : hi
+ * Return: hi
  */
 int _strncmp(char *s, char *ss, int n)
 {
