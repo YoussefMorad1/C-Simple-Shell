@@ -49,12 +49,12 @@ int main(int argc, char **argv)
 			execve(cmd, argv2, environ);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
-/*	if (is_pipe)
+	if (is_pipe)
 		{
 			clean_strs(s, 0, 0);
 			break;
 		}
-*/
+
 	}
 	return (0);
 }
