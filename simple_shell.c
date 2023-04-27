@@ -30,12 +30,13 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 /*		printstr("hello2\n");*/
-		if (!_strlen(s))
+		if (_strlen(s))
+			parse_input(s, &cmd, &argv2);
+		if (!_strlen(s) || !cmd || !_strlen(cmd))
 		{
 			clean_args(argv2);
 			continue;
 		}
-		parse_input(s, &cmd, &argv2);
 		is_file = find_file(&cmd, _getenv("PATH"));
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
