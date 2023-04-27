@@ -13,7 +13,7 @@ char *_getenv(char *s);
 int is_file(char *s);
 int find_file(char **file, char *path);
 
-void exit_shell(char **argv, char **argv_main);
+void exit_shell(char **argv, char **argv_main, int stts);
 
 void display_prompt(void);
 int get_input(char **ptr, size_t *sz, char **argv);

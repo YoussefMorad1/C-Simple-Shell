@@ -8,7 +8,7 @@
  */
 int main(int argc, char **argv)
 {
-	int is_file = 0, is_pipe = !isatty(0);
+	int is_file = 0, is_pipe = !isatty(0), stts = 0;
 	size_t SIZE = 1000;
 	char *s = malloc(SIZE), **argv2, *cmd;
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 		{
 			clean_strs(s, cmd, 0);
 			if (is_file != -1)
-				exit_shell(argv2, argv);
+				exit_shell(argv2, argv, stts);
 			clean_args(argv2);
 			exit(1);
 		}
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 			printstr(": No such file or directory\n");
 		}
 		else if (fork())
-			wait(0);
+			wait(&stts);
 		else
 			execve(cmd, argv2, environ);
 		clean_args(argv2);
