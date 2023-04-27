@@ -21,7 +21,7 @@ void exit_shell(char **argv, char **argv_main, int stts)
 		if (!chk)
 		{
 			printers(argv_main[0]);
-			printers(": exit: Illegal number: ");
+			printers(": 1: exit: Illegal number: ");
 			printers(argv[1]);
 			printers("\n");
 			return;
