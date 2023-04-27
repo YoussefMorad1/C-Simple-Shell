@@ -44,8 +44,8 @@ int main(int argc, char **argv)
 		}
 		else if (!is_file)
 		{
-			printstr(argv[0]);
-			printstr(": No such file or directory\n");
+			printers(argv[0]);
+			printers(": No such file or directory\n");
 			execve(cmd, argv2, environ);
 			stts = errno;
 		}
