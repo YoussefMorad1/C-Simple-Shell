@@ -1,14 +1,14 @@
 #include "shell.h"
 /**
- * main - hi
- *
- * @argc: number of arguments
- * @argv: array of arguments
- * Return: hi
- */
+ *  * main - hi
+ *   *
+ *    * @argc: number of arguments
+ *     * @argv: array of arguments
+ *      * Return: hi
+ *       */
 int main(int argc, char **argv, char **env)
 {
-	int is_file = 0, is_pipe = !isatty(0), stts = 0;
+	int is_file = 0, is_pipe = !isatty(0);
 	size_t SIZE = 1000;
 	char *s = malloc(SIZE), **argv2, *cmd;
 
@@ -16,8 +16,6 @@ int main(int argc, char **argv, char **env)
 	errno = 0;
 	while (1)
 	{
-		printint(errno);
-		printstr("\n");
 		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
 		if (!is_pipe)
 			display_prompt();
@@ -29,31 +27,33 @@ int main(int argc, char **argv, char **env)
 			clean_args(argv2);
 			continue;
 		}
-		stts = errno;
 		is_file = find_file(&cmd, _getenv("PATH"));
-		errno = stts;
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
-			/*printint(stts);
-			printstr("\n");
-			printint(errno);
-			printstr("\n");*/
+//			stts = errno;
 			clean_strs(s, cmd, 0);
 			if (is_file != -1)
 				exit_shell(argv2, argv, errno);
+//			stts = errno;
 			clean_args(argv2);
 			exit(errno);
 		}
 		else if (!is_file)
 		{
-			printers(argv[0]);
-			printers(": No such file or directory\n");
+			printstr(argv[0]);
+			printstr(": No such file or directory\n");
 			execve(cmd, argv2, env);
+//			stts = errno;
 		}
 		else if (fork())
-			wait(&errno);
+		{
+			wait(0);
+		}
 		else
+		{
 			execve(cmd, argv2, env);
+//			stts = errno;
+		}
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}
