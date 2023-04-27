@@ -30,7 +30,7 @@ void exit_shell(char **argv, char **argv_main, int stts)
 		if (x < 0)
 		{
 			printers(argv_main[0]);
-			printers(": exit: Illegal number: ");
+			printers(": 1: exit: Illegal number: ");
 			printer(x);
 			printers("\n");
 			return;
