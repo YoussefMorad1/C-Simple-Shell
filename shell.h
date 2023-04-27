@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <errno.h>
 char **split(char *s, char ch);
 char *_getenv(char *s);
 int is_file(char *s);

@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		if (!is_pipe)
 			display_prompt();
 		if (!get_input(&s, &SIZE, argv2))
-			exit(0);
+			exit(stts);
 		parse_input(s, &cmd, &argv2);
 		if (!_strlen(s) || !cmd || !_strlen(cmd))
 		{
@@ -29,21 +29,33 @@ int main(int argc, char **argv)
 		is_file = find_file(&cmd, _getenv("PATH"));
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
+			/*printint(stts);
+			printstr("\n");
+			printint(errno);
+			printstr("\n");*/
+			stts = errno;
 			clean_strs(s, cmd, 0);
 			if (is_file != -1)
 				exit_shell(argv2, argv, stts);
 			clean_args(argv2);
-			exit(1);
+			exit(stts);
 		}
 		else if (!is_file)
 		{
 			printstr(argv[0]);
 			printstr(": No such file or directory\n");
+			execve(cmd, argv2, environ);
+			stts = errno;
 		}
 		else if (fork())
+		{
 			wait(&stts);
+		}
 		else
+		{
 			execve(cmd, argv2, environ);
+			stts = errno;
+		}
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}
