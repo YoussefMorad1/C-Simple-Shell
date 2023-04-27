@@ -30,11 +30,9 @@ int main(int argc, char **argv, char **env)
 		is_file = find_file(&cmd, _getenv("PATH"));
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
-//			stts = errno;
 			clean_strs(s, cmd, 0);
 			if (is_file != -1)
 				exit_shell(argv2, argv, errno);
-//			stts = errno;
 			clean_args(argv2);
 			exit(errno);
 		}
@@ -43,7 +41,6 @@ int main(int argc, char **argv, char **env)
 			printstr(argv[0]);
 			printstr(": No such file or directory\n");
 			execve(cmd, argv2, env);
-//			stts = errno;
 		}
 		else if (fork())
 		{
@@ -52,7 +49,6 @@ int main(int argc, char **argv, char **env)
 		else
 		{
 			execve(cmd, argv2, env);
-//			stts = errno;
 		}
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
