@@ -6,7 +6,7 @@
  * @argv: array of arguments
  * Return: hi
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
 	int is_file = 0, is_pipe = !isatty(0), stts = 0;
 	size_t SIZE = 1000;
@@ -16,6 +16,8 @@ int main(int argc, char **argv)
 	errno = 0;
 	while (1)
 	{
+		printint(errno);
+		printstr("\n");
 		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
 		if (!is_pipe)
 			display_prompt();
@@ -46,13 +48,12 @@ int main(int argc, char **argv)
 		{
 			printers(argv[0]);
 			printers(": No such file or directory\n");
-			execve(cmd, argv2, environ);
+			execve(cmd, argv2, env);
 		}
 		else if (fork())
-			wait(0);
+			wait(&errno);
 		else
-			execve(cmd, argv2, environ);
-		
+			execve(cmd, argv2, env);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}
