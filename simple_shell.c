@@ -13,25 +13,14 @@ int main(int argc, char **argv)
 	char *s = malloc(SIZE), **argv2, *cmd;
 
 	(void)argc;
-	if (!s)
-		exit(1);
 	while (1)
 	{
-		/*printstr("hello\n");*/
 		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
 		if (!is_pipe)
-		{
 			display_prompt();
-		}
 		if (!get_input(&s, &SIZE, argv2))
-		{
-			if (is_pipe)
-				exit(0);
-			exit(1);
-		}
-/*		printstr("hello2\n");*/
-		if (_strlen(s))
-			parse_input(s, &cmd, &argv2);
+			exit(0);
+		parse_input(s, &cmd, &argv2);
 		if (!_strlen(s) || !cmd || !_strlen(cmd))
 		{
 			clean_args(argv2);
@@ -57,12 +46,6 @@ int main(int argc, char **argv)
 			execve(cmd, argv2, environ);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
-/*		if (is_pipe)
-		{
-			clean_strs(s, 0, 0);
-			break;
-		}
-*/
 	}
 	return (0);
 }
