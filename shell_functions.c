@@ -6,16 +6,35 @@
  */
 void exit_shell(char **argv, char **argv_main, int stts)
 {
-	int x;
+	int x, chk = 1, i;
 
 	if (!argv[1])
 	{
 		clean_args(argv);
 		exit(stts);
-	}
-	else if (argv[1] && !argv[2])
+	}	
+	else if (!argv[2])
 	{
+		for (i = 0; argv[1][i];++i)
+			if (argv[1][i] < '0' || argv[1][i] > '9')
+				chk = 0;
+		if (!chk)
+		{
+			printers(argv_main[0]);
+			printers(": exit: Illegal number: ");
+			printers(argv[1]);
+			printers("\n");
+			return;
+		}
 		x = _stoi(argv[1]);
+		if (x < 0)
+		{
+			printers(argv_main[0]);
+			printers(": exit: Illegal number: ");
+			printer(x);
+			printers("\n");
+			return;
+		}
 		clean_args(argv);
 		exit(x);
 	}
