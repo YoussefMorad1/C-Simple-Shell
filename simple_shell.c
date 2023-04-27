@@ -8,7 +8,7 @@
  */
 int main(int argc, char **argv)
 {
-	int is_file = 0, is_pipe = 1;
+	int is_file = 0, is_pipe = !isatty(0);
 	size_t SIZE = 1000;
 	char *s = malloc(SIZE), **argv2, *cmd;
 
@@ -18,10 +18,9 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
-		if (isatty(0))
+		if (!is_pipe)
 		{
 			display_prompt();
-			is_pipe = 0;	
 		}
 		get_input(&s, &SIZE, argv2);
 		if (!_strlen(s))
@@ -50,11 +49,12 @@ int main(int argc, char **argv)
 			execve(cmd, argv2, environ);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
-		if (is_pipe)
+/*	if (is_pipe)
 		{
 			clean_strs(s, 0, 0);
 			break;
 		}
+*/
 	}
 	return (0);
 }
