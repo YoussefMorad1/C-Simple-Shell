@@ -24,6 +24,7 @@ void exit_shell(char **argv, char **argv_main, int stts)
 			printers(": 1: exit: Illegal number: ");
 			printers(argv[1]);
 			printers("\n");
+			errno = 2;
 			return;
 		}
 		x = _stoi(argv[1]);
@@ -33,6 +34,7 @@ void exit_shell(char **argv, char **argv_main, int stts)
 			printers(": 1: exit: Illegal number: ");
 			printer(x);
 			printers("\n");
+			errno = 2;
 			return;
 		}
 		clean_args(argv);

@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 			clean_strs(s, cmd, 0);
 			if (is_file != -1)
 				exit_shell(argv2, argv, stts);
+			stts = errno;
 			clean_args(argv2);
 			exit(stts);
 		}
