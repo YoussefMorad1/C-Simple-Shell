@@ -18,7 +18,8 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
-		display_prompt();
+		if (isatty(0))
+			display_prompt();
 		get_input(&s, &SIZE, argv2);
 		if (!_strlen(s))
 		{

@@ -21,7 +21,7 @@ void get_input(char **ptr, size_t *sz, char **argv)
 	{
 		free(*ptr);
 		clean_args(argv);
-		printstr("\n");
+/*		printstr("\n");*/
 		exit(1);
 	}
 	s = *ptr;
