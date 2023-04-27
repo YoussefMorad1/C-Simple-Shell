@@ -17,12 +17,19 @@ int main(int argc, char **argv)
 		exit(1);
 	while (1)
 	{
+		/*printstr("hello\n");*/
 		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
 		if (!is_pipe)
 		{
 			display_prompt();
 		}
-		get_input(&s, &SIZE, argv2);
+		if (!get_input(&s, &SIZE, argv2))
+		{
+			if (is_pipe)
+				exit(0);
+			exit(1);
+		}
+/*		printstr("hello2\n");*/
 		if (!_strlen(s))
 		{
 			clean_args(argv2);
@@ -49,12 +56,12 @@ int main(int argc, char **argv)
 			execve(cmd, argv2, environ);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
-	if (is_pipe)
+/*		if (is_pipe)
 		{
 			clean_strs(s, 0, 0);
 			break;
 		}
-
+*/
 	}
 	return (0);
 }

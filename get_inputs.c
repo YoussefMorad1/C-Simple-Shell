@@ -12,7 +12,7 @@ void display_prompt(void)
  * @sz: pointer to size of the string
  * @argv: args to delete
  */
-void get_input(char **ptr, size_t *sz, char **argv)
+int get_input(char **ptr, size_t *sz, char **argv)
 {
 	int noChrs = getline(ptr, sz, stdin);
 	char *s;
@@ -22,12 +22,13 @@ void get_input(char **ptr, size_t *sz, char **argv)
 		free(*ptr);
 		clean_args(argv);
 /*		printstr("\n");*/
-		exit(1);
+		return (0);
 	}
 	s = *ptr;
 	if (s[_strlen(s) - 1] == '\n')
 		/* remove the '\n' from the end */
 		s[_strlen(s) - 1] = '\0';
+	return (1);
 }
 /**
  * parse_input - parse line of input to command and parameters
