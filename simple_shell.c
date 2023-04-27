@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 			printstr("\n");
 			printint(errno);
 			printstr("\n");*/
-			stts = errno;
+			if (stts)
+				stts = errno;
 			clean_strs(s, cmd, 0);
 			if (is_file != -1)
 				exit_shell(argv2, argv, stts);
