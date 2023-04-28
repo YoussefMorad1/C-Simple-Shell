@@ -32,8 +32,7 @@ int main(int argc, char **argv, char **env)
 		}
 		else if (!is_file)
 		{
-			printers(argv[0]);
-			printers(": No such file or directory\n");
+			print_not_found(argv[0], cmd);
 			execve(cmd, argv2, env);
 			stts = errno;
 		}
