@@ -2,8 +2,10 @@
 /**
  * display_prompt - hi
  */
-void display_prompt(void)
+void display_prompt(int is_pipe)
 {
+	if (is_pipe)
+		return;
 	printstr("# ");
 }
 /**

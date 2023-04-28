@@ -7,16 +7,14 @@
  **/
 int main(int argc, char **argv, char **env)
 {
-	int is_file = 0, is_pipe = !isatty(0), stts = 0, tmp;
+	int is_file = 0, is_pipe = !isatty(0), stts = 0, tmp, id;
 	size_t SIZE = 1000;
 	char *s = malloc(SIZE), **argv2, *cmd;
 
-	(void)argc;
 	while (1)
 	{
-		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0;
-		if (!is_pipe)
-			display_prompt();
+		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0, (void)argc;
+		display_prompt(is_pipe);
 		if (!get_input(&s, &SIZE, argv2))
 			exit(stts);
 		parse_input(s, &cmd, &argv2);
@@ -29,18 +27,16 @@ int main(int argc, char **argv, char **env)
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
 			clean_strs(s, cmd, 0);
-			if (is_file != -1)
-				exit_shell(argv2, argv, stts);
-			clean_args(argv2);
-			exit(stts);
+			exit_shell(argv2, argv, stts);
 		}
 		else if (!is_file)
 		{
-			printstr(argv[0]);
-			printstr(": No such file or directory\n");
+			printers(argv[0]);
+			printers(": No such file or directory\n");
 			execve(cmd, argv2, env);
+			stts = errno;
 		}
-		else if (fork())
+		else if (fork() != 0)
 		{
 			wait(&tmp);
 			stts = WEXITSTATUS(tmp);
