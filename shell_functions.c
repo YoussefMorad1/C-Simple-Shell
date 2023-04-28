@@ -25,6 +25,7 @@ void exit_shell(char **argv, char **argv_main, int stts)
 			printers(argv[1]);
 			printers("\n");
 			errno = 2;
+			exit(2);
 			return;
 		}
 		x = _stoi(argv[1]);
