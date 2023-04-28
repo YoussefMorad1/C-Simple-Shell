@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **env)
 			clean_args(argv2);
 			continue;
 		}
-		is_file = find_file(&cmd, _getenv("PATH", env));
+		is_file = find_file(&cmd, _getenv("PATH", environ));
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
 			clean_strs(s, cmd, 0);
@@ -33,7 +33,7 @@ int main(int argc, char **argv, char **env)
 		else if (!is_file)
 		{
 			print_not_found(argv[0], cmd);
-			execve(cmd, argv2, env);
+			execve(cmd, argv2, environ);
 			stts = 127;
 		}
 		else if (fork() != 0)
@@ -42,7 +42,7 @@ int main(int argc, char **argv, char **env)
 			stts = WEXITSTATUS(tmp);
 		}
 		else
-			execve(cmd, argv2, env);
+			execve(cmd, argv2, environ);
 		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 	}
