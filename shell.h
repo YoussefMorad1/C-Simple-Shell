@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 char **split(char *s, char ch);
-char *_getenv(char *s);
+char *_getenv(char *s, char **env);
 int is_file(char *s);
 int find_file(char **file, char *path);
 

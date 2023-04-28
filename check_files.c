@@ -2,11 +2,12 @@
 /**
  * _getenv - get environment variable
  * @s: key of variable
+ * @env: environment
  * Return: value of this given key
  */
-char *_getenv(char *s)
+char *_getenv(char *s, char **env)
 {
-	char **ptr = environ;
+	char **ptr = env;
 
 	for (; *ptr; ptr++)
 	{
