@@ -30,6 +30,8 @@ int main(int argc, char **argv, char **env)
 			clean_strs(s, cmd, 0);
 			exit_shell(argv2, argv, stts);
 		}
+		else if(!_strcmp(cmd, "env"))
+			printenv(environ);
 		else if (!is_file)
 		{
 			print_not_found(argv[0], cmd);

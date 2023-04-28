@@ -24,10 +24,13 @@ char *_getenv(char *s, char **env)
  */
 int find_file(char **ptrFile, char *path)
 {
-	char **all_paths = split(path, ':'), *file = *ptrFile,
+	char **all_paths, *file = *ptrFile,
 	     *full_path, *slsh, *cur_path;
 	int i = 0, tmp = errno;
 
+	if (!path)
+		return (0);
+	all_paths = split(path, ':');
 	if (!all_paths)
 		return (-1);
 	if (is_file(file) && (file[0] == '/' || file[0] == '~' ||
