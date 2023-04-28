@@ -28,17 +28,16 @@ int find_file(char **ptrFile, char *path)
 	     *full_path, *slsh, *cur_path;
 	int i = 0, tmp = errno;
 
+	if (is_file(file) && (file[0] == '/' || file[0] == '~' ||
+				file[0] == '.' || file[0] == '#' || file[0] == '-')){
+		errno = tmp;
+		return (1);
+	}
 	if (!path)
 		return (0);
 	all_paths = split(path, ':');
 	if (!all_paths)
 		return (-1);
-	if (is_file(file) && (file[0] == '/' || file[0] == '~' ||
-				file[0] == '.' || file[0] == '#' || file[0] == '-')){
-		clean_args(all_paths);
-		errno = tmp;
-		return (1);
-	}
 	while (all_paths[i])
 	{
 		cur_path = all_paths[i], slsh = "/\0";
