@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
  * display_prompt - hi
+ * @is_pipe: hi
  */
 void display_prompt(int is_pipe)
 {
