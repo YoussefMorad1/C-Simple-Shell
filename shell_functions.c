@@ -12,10 +12,10 @@ void exit_shell(char **argv, char **argv_main, int stts)
 	{
 		clean_args(argv);
 		exit(stts);
-	}	
+	}
 	else if (!argv[2])
 	{
-		for (i = 0; argv[1][i];++i)
+		for (i = 0; argv[1][i]; ++i)
 			if (argv[1][i] < '0' || argv[1][i] > '9')
 				chk = 0;
 		if (!chk)
