@@ -8,7 +8,7 @@
  **/
 int main(int argc, char **argv, char **env)
 {
-	int is_file = 0, is_pipe = !isatty(0), stts = 0, tmp, id;
+	int is_file = 0, is_pipe = !isatty(0), stts = 0, tmp;
 	size_t SIZE = 1000;
 	char *s = malloc(SIZE), **argv2, *cmd;
 
