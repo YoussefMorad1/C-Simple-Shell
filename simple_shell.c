@@ -34,7 +34,7 @@ int main(int argc, char **argv, char **env)
 		{
 			print_not_found(argv[0], cmd);
 			execve(cmd, argv2, env);
-			stts = errno;
+			stts = 127;
 		}
 		else if (fork() != 0)
 		{
