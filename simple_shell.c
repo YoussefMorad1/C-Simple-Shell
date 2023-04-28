@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **env)
 			clean_args(argv2);
 			continue;
 		}
-		is_file = find_file(&cmd, _getenv("PATH"));
+		is_file = find_file(&cmd, _getenv("PATH", env));
 		if (is_file == -1 || !_strcmp(cmd, "exit"))
 		{
 			clean_strs(s, cmd, 0);
