@@ -7,7 +7,8 @@ void printenv(char **env)
 {
 	char **s = env;
 
-	for (; *s; s++) {
+	for (; *s; s++)
+	{
 		printstr(*s);
 		printstr("\n");
 	}
