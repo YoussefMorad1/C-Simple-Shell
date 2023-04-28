@@ -14,7 +14,7 @@ int main(int argc, char **argv, char **env)
 
 	while (1)
 	{
-		argv2 = malloc(sizeof(*argv2)), cmd = NULL, argv2[0] = 0, (void)argc;
+		argv2 = malloc(sizeof(*argv2)), cmd = 0, argv2[0] = 0, (void)argc, (void)env;
 		display_prompt(is_pipe);
 		if (!get_input(&s, &SIZE, argv2))
 			exit(stts);
