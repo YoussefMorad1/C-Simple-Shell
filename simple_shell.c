@@ -43,7 +43,7 @@ int main(int argc, char **argv, char **env)
 		else if (fork())
 		{
 			wait(&tmp);
-			errno = WEXITSTATUS(tmp);
+			stts = WEXITSTATUS(tmp);
 		}
 		else
 			execve(cmd, argv2, env);
