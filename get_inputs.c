@@ -14,6 +14,7 @@ void display_prompt(int is_pipe)
  * @ptr: pointer to string to get input in
  * @sz: pointer to size of the string
  * @argv: args to delete
+ * Return: int
  */
 int get_input(char **ptr, size_t *sz, char **argv)
 {
