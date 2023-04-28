@@ -46,8 +46,6 @@ int main(int argc, char **argv, char **env)
 		{
 			wait(&tmp);
 			errno = WEXITSTATUS(tmp);
-			printint(errno);
-			printstr("\n");
 		}
 		else
 		{
