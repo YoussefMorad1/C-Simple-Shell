@@ -3,6 +3,7 @@
  * exit_shell - exit the shell
  * @argv: arguments to exit command
  * @argv_main: arguments of the main function (shell program)
+ * @stts : cur sttaus
  */
 void exit_shell(char **argv, char **argv_main, int stts)
 {

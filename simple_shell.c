@@ -3,6 +3,7 @@
  * main - hi
  * @argc: number of arguments
  * @argv: array of arguments
+ * @env: environmetn
  * Return: hi
  **/
 int main(int argc, char **argv, char **env)
