@@ -25,13 +25,14 @@ int find_file(char **ptrFile, char *path)
 {
 	char **all_paths = split(path, ':'), *file = *ptrFile,
 	     *full_path, *slsh, *cur_path;
-	int i = 0;
+	int i = 0, tmp = errno;
 
 	if (!all_paths)
 		return (-1);
 	if (is_file(file) && (file[0] == '/' || file[0] == '~' ||
 				file[0] == '.' || file[0] == '#' || file[0] == '-')){
 		clean_args(all_paths);
+		errno = tmp;
 		return (1);
 	}
 	while (all_paths[i])
@@ -50,11 +51,13 @@ int find_file(char **ptrFile, char *path)
 			free(file);
 			(*ptrFile) = full_path;
 			clean_args(all_paths);
+			errno = tmp;
 			return (1);
 		}
 		i++;
 		free(full_path);
 	}
+	errno = tmp;
 	clean_args(all_paths);
 	return (0);
 }

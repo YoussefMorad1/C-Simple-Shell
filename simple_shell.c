@@ -8,7 +8,7 @@
  *       */
 int main(int argc, char **argv, char **env)
 {
-	int is_file = 0, is_pipe = !isatty(0);
+	int is_file = 0, is_pipe = !isatty(0), tmp;
 	size_t SIZE = 1000;
 	char *s = malloc(SIZE), **argv2, *cmd;
 
@@ -44,7 +44,10 @@ int main(int argc, char **argv, char **env)
 		}
 		else if (fork())
 		{
-			wait(0);
+			wait(&tmp);
+			errno = WEXITSTATUS(tmp);
+			printint(errno);
+			printstr("\n");
 		}
 		else
 		{
