@@ -11,7 +11,7 @@ char *_getenv(char *s, char **env)
 
 	for (; *ptr; ptr++)
 	{
-		if (!_strncmp(*ptr, s, _strlen(s)))
+		if (!_strncmp(*ptr, s, _strlen(s)) && *((*ptr) + _strlen(s)) == '=')
 			return ((*ptr) + _strlen(s) + 1);
 	}
 	return (0);
