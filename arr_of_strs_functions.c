@@ -42,7 +42,10 @@ int push(char ***ptr, char *s)
 	argv = tmp;
 	argv[i] = malloc(_strlen(s) + 1);
 	if (!argv[i])
+	{
+		free(oldptr);
 		return (0);
+	}
 	_strcpy(argv[i], s);
 	argv[i + 1] = 0;
 	(*ptr) = argv;
