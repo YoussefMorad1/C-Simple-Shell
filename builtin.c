@@ -71,9 +71,8 @@ void _unsetenv(char **argv)
 	{
 		if (!_strncmp(*ptr, key, _strlen(key)) && (*ptr)[_strlen(key)] == '=')
 		{
-			printstr("helloworld\n");
 			for (tmp = ptr + 1; *tmp; ptr++, tmp++)
-				ptr = tmp;
+				(*ptr) = (*tmp);
 			*ptr = 0;
 			return;
 		}
