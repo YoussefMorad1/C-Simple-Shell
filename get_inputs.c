@@ -23,7 +23,8 @@ int get_input(char **ptr, size_t *sz, char **argv)
 
 	if (noChrs == -1)
 	{
-		free(*ptr);
+		if (*ptr)
+			free(*ptr);
 		clean_args(argv);
 /*		printstr("\n");*/
 		return (0);

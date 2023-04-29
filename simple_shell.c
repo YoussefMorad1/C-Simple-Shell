@@ -15,10 +15,10 @@ int main(int argc, char **argv, char **env)
 	argv2[0] = 0, cmd[0] = 0;
 	while (1)
 	{
-		clean_args(argv2);
 		clean_strs(cmd, 0, 0);
 		if (!get_input(&s, &SIZE, argv2))
 			exit(stts);
+		clean_args(argv2);
 		argv2 = malloc(sizeof(*argv2)), cmd = 0, argv2[0] = 0, (void)argc, (void)env;
 		display_prompt(is_pipe);
 		parse_input(s, &cmd, &argv2);
