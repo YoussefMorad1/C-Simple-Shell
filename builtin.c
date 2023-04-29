@@ -49,7 +49,8 @@ void _setenv(char **argv)
 			return;
 		}
 	}
-	push(&environ, tmp);
+	_strcpy(*ptr, tmp);
+	*(ptr + 1) = 0;
 	if (tmp)
 		free(tmp);
 }
