@@ -44,7 +44,7 @@ void _setenv(char **argv)
 			/*
 			 * (*ptr) = tmp;
 			 */
-			strcpy(*ptr, tmp);
+			_strcpy(*ptr, tmp);
 			free(tmp);
 			return;
 		}
