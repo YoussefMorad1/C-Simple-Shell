@@ -38,7 +38,8 @@ int push(char ***ptr, char *s)
 		return (0);
 	for (j = 0; j <= i; j++)
 		tmp[j] = argv[j];
-	oldptr = argv;
+	if (argv != environ)
+		free(argv);
 	argv = tmp;
 	argv[i] = malloc(_strlen(s) + 1);
 	if (!argv[i])
@@ -49,6 +50,5 @@ int push(char ***ptr, char *s)
 	_strcpy(argv[i], s);
 	argv[i + 1] = 0;
 	(*ptr) = argv;
-	free(oldptr);
 	return (1);
 }
