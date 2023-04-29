@@ -41,7 +41,11 @@ void _setenv(char **argv)
 	{
 		if (!_strncmp(*ptr, key, _strlen(key)) && (*ptr)[_strlen(key)] == '=')
 		{
-			(*ptr) = tmp;
+			/*
+			 * (*ptr) = tmp;
+			 */
+			strcpy(*ptr, tmp);
+			free(tmp);
 			return;
 		}
 	}
