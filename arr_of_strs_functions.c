@@ -29,7 +29,7 @@ void print_args(char **argv)
 int push(char ***ptr, char *s)
 {
 	int i = 0, j;
-	char **argv = *ptr, **tmp, **oldptr;
+	char **argv = *ptr, **tmp;
 
 	while (argv[i])
 		i++;
@@ -44,7 +44,6 @@ int push(char ***ptr, char *s)
 	argv[i] = malloc(_strlen(s) + 1);
 	if (!argv[i])
 	{
-		free(oldptr);
 		return (0);
 	}
 	_strcpy(argv[i], s);
