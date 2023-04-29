@@ -74,6 +74,7 @@ void _unsetenv(char **argv)
 			for (tmp = ptr + 1; *tmp; ptr++, tmp++)
 				ptr = tmp;
 			*ptr = 0;
+			return;
 		}
 	}
 }
