@@ -26,4 +26,8 @@ void clean_args(char **argv);
 
 int push(char ***argv, char *s);
 void print_args(char **s);
+
+int built_in(char *s, char **argv);
+void _setenv(char **argv);
+void _unsetenv(char **argv);
 #endif
