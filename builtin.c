@@ -49,7 +49,7 @@ void _setenv(char **argv)
 			return;
 		}
 	}
-	_strcpy(*ptr, tmp);
+	*ptr = tmp;
 	*(ptr + 1) = 0;
 	if (tmp)
 		free(tmp);
